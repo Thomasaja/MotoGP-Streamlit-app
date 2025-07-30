@@ -63,12 +63,12 @@ if uploaded_file is not None:
        
         scaler_path = 'my_minmax_scaler.pkl' 
         scaler = joblib.load(scaler_path)
-        st.sidebar.success(f"Scaler berhasil dimuat dari '{scaler_path}'")
+    
 
         # Muat model
         model_path = 'my_lstm_model.h5' # Sesuaikan nama file model Anda
         model = load_model(model_path)
-        st.sidebar.success(f"Model LSTM berhasil dimuat dari '{model_path}'")
+       
 
     
         # Normalisasi
@@ -180,7 +180,8 @@ if uploaded_file is not None:
             st.warning(f"Tidak ada data valid untuk {selected_rider} pada tahun {selected_year}.")
         else:
             # Filter hingga race ke-n
-            rider_df_filtered = rider_df[rider_df['sequence'] <= selected_race].copy() # Tambahkan .copy()
+            rider_df_filtered = rider_df[rider_df['sequence'] <= selected_race].copy() 
+            st.write(f"Jumlah race yang difilter: {len(rider_df_filtered)}")
 
             if rider_df_filtered.empty:
                 st.warning(f"Tidak ada data hingga race ke-{selected_race}.")
@@ -250,7 +251,7 @@ if uploaded_file is not None:
                     next_race = rider_df_filtered['sequence'].max() + 1
                     st.success(f"Estimasi Posisi Finish untuk Race ke-{next_race}: **{predicted_position:.2f}**")
                 else:
-                    st.info(f"❗ Data tidak cukup untuk prediksi LSTM (butuh minimal {time_step} race) atau model/scaler belum dimuat.")
+                    st.info(f"❗ Data tidak cukup untuk prediksi LSTM (butuh minimal {time_step} race)")
 
                 
                 st.subheader("Ekspor Data")
