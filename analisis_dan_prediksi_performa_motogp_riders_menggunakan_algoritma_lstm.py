@@ -7,7 +7,6 @@ Adapted for Streamlit from Google Colab Notebook.
 # Import Library
 import numpy as np
 import pandas as pd
-import tensorflow as tf
 import math
 import re 
 from sklearn.model_selection import train_test_split
