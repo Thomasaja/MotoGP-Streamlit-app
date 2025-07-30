@@ -53,7 +53,7 @@ setuptools==80.9.0
 six==1.17.0
 smmap==5.0.2
 streamlit==1.47.1
-tensorflow==2.9.0
+tensorflow
 threadpoolctl==3.6.0
 toml==0.10.2
 tornado==6.5.1
